@@ -1,7 +1,3 @@
-// 소리 on/off(오디오객체 이용)
-// 배너 열고 닫기
-// 랜덤으로 떨어지게 하기
-
 // html에 있던 태그를 타겟잡아 스크립트로 가져오는 부분
 // 왜? 나중에 쓸거니까
 var banner = document.getElementById('banner');
@@ -14,7 +10,7 @@ var banner_height = getComputedStyle(banner).height;
 
 var cast = [];
 
-// {} : 객체를 만드는 방법 중 하나(이전에는 객체 생성 함수를 만들어서 new로 객체를 생성했죠)
+// {} : 객체를 만드는 방법 중 하나
 // 풍선의 위치가 어떻게 될건지에 대한 부분
 function set_balloon(num) {
 
@@ -55,9 +51,10 @@ function animate_balloon() {
 
         if (cast[i].y < parseInt(banner_height)) {
 
-            // 떨어질 때 y축의 좌표를 찍으면서 내려오는건데 그 좌표값이 작으면 통통통 찍으니까 늦게 내려오는것처럼 보일테고, 좌표값 사이의 텀이 크면 퉁퉁퉁 찍으니까 빨리 내려오는 것처럼 보일테고
-            cast[i].y += 1 + cast[i].speed; // 그럼 여기 -하면 올라감?, 어떻게 떨어질거냐
-            cast[i].angle += cast[i].speed; // 회전의 속도?
+            // 떨어질 때 y축의 좌표를 찍으면서 내려오는건데
+            // 그 좌표값이 작으면 통통통 찍으니까 늦게 내려오는것처럼 보일테고, 좌표값 사이의 텀이 크면 퉁퉁퉁 찍으니까 빨리 내려오는 것처럼 보일테고
+            cast[i].y += 1 + cast[i].speed; // 어떻게 떨어질거냐
+            cast[i].angle += cast[i].speed; // 회전의 속도
         } else {    // 배너에서 사라지면
             set_balloon(i);  // 다시 위로 올라가야하니까
         }
@@ -106,7 +103,7 @@ sound_btn.onclick = function (event) {
     // event.stopPropagation()는 해당 이벤트가 전파되는 것을 막습니다.
     // 즉, 이벤트 버블링의 경우 클릭한 요소의 이벤트를 발생시키고 상위 요소로 이벤트가 전달되는 것을 막고,
     // 캡쳐링의 경우에는 최상위 요소의 이벤트만 발생시키고 하위 요소들로 이벤트를 전달하지 않습니다.
-    // event.stopPropagation();
+    event.stopPropagation();
 }
 
 toggle.onclick = function() {
